@@ -1,0 +1,23 @@
+SELECT
+    `products`.*,
+    COUNT(`reviews`.`productct_id`) AS `reviews_count`,
+    IF(
+        ROUND(AVG(`reviews`.`value`)) IS NULL,
+        0,
+        ROUND(AVG(`reviews`.`value`))
+    ) AS `reviews_avg`,
+    `subcategories`.`name_en` AS `subcategory_name_en`,
+    `brands`.`name_en` AS `brand_name_en`,
+    `categories`.`id` AS `category_id ,
+    ` categories `.` name_en ` AS ` category_name_en `
+FROM
+    ` products `
+LEFT JOIN ` reviews ` ON ` products `.` id ` = ` reviews `.` productct_id `
+WHERE
+    ` products `.`
+STATUS
+    ` = 1
+    GROUP BY
+    ` products `.` id `
+
+13428
